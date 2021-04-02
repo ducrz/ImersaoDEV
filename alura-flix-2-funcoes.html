@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <title>
+        Imersão Dev - Aula 05
+    </title>
+</head>
+<style>
+body {
+    font-family: 'Roboto Mono',monospace;
+    text-align:center;
+    background-image: url('https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-04-aluraflix-e-filmes.png');
+    background-color: #000000;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .page-title {
+    color: #ffffff;
+    margin: 0 0 5px;
+  }
+  
+  .page-subtitle {
+    color: #ffffff;
+    margin-top: 5px;
+  }
+  
+  .page-logo {
+    width: 200px;
+  }
+  
+  .alura-logo {
+    width: 40px;
+    position: absolute;
+    top: 10px;
+    right:10px;
+  }
+  
+  #listaFilmes img {
+    margin: 10px;
+  }
+  
+  .form-wrapper {
+    margin: 0 0 15px;
+  }
+  
+  .form-wrapper input {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 15px;
+  }
+  
+  .form-wrapper button {
+    border: 0;
+    color: #ffffff;
+    background: #DA1E26;
+    font-weight:bold;
+    padding: 15px 20px;
+    font-size: 16px;
+    borde-radius: 4px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: .3s;
+  }
+  
+  .form-wrapper button:hover {
+    opacity:.8;
+  }
+</style>
+<body>
+    <div class="container">
+        <h1 class="page-title">
+            Aluraflix
+        </h1>
+        <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-aluraflix.svg" class="page-logo"
+            alt="">
+        <p class="page-subtitle">
+            Quais sãos seu filmes favorito? Adicione as Capas e Trailers!
+        </p>
+        <div class="form-wrapper">
+            <input type="text" id="filme" name="filme" placeholder="Insira endereço de imagem">
+            <button onClick="adicionarFilme()">Adicionar Capa Filme</button>
+        </div>
+    </div>
+    <div id="listaFilmes"></div>
+    <div class="form-wrapper">
+      <input type="text" id="trailerfilme" name="trailerfilme" placeholder="Insira endereço do Trailer no Youtube">
+            <button onClick="adicionarTrailer()">Adicionar Trailer Filme</button>
+  </div>
+  </div>
+      <div id="listaTrailers"></div>
+
+    <a href="https://alura.com.br/" target="_blank">
+        <img src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="" class="alura-logo">
+    </a>
+</body>
+<script>
+function adicionarFilme(){
+
+var campoFilmeFavorito= document.querySelector('#filme');
+var filmeFavorito = campoFilmeFavorito.value;
+  
+  
+  if (filmeFavorito.endsWith(".jpg" || ".png" || ".jpeg" )) {
+    listarFilmesNaTela(filmeFavorito);
+  }
+  else{
+    alert("imagem inválida");
+  }
+    campoFilmeFavorito.value=""
+  
+}
+
+function listarFilmesNaTela(filme) {
+  var listaFilmes = document.querySelector('#listaFilmes')
+  var elementoFilme = "<img src=" + filme + ">"
+  listaFilmes.innerHTML = listaFilmes.innerHTML + elementoFilme
+}
+
+function adicionarTrailer(){
+  
+ var campoTrailerFilmeFavorito= document.querySelector('#trailerfilme');
+  
+var trailerFilmeFavorito = campoTrailerFilmeFavorito.value; 
+  
+if (trailerFilmeFavorito.indexOf('youtube') > -1) {
+  listarTrailersFilmesNaTela(trailerFilmeFavorito);
+
+  }
+else{
+    alert("Endereço não é de um vídeo do Youtube!");
+}
+  
+  campoTrailerFilmeFavorito.value="";
+}
+
+function listarTrailersFilmesNaTela(trailerFilme) {
+var listaTrailersFilmes = document.querySelector('#listaTrailers');
+var explode = trailerFilme.split("?v=");
+var idVideo= explode[1];
+  
+var elementoTrailersFilme = "<iframe width='560' height='315' src=https://www.youtube.com/embed/"+idVideo+ "?controls=0 title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+  
+listaTrailersFilmes.innerHTML = listaTrailersFilmes.innerHTML + elementoTrailersFilme
+}
+</script>
+
+</html>
