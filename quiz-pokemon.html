@@ -1,0 +1,203 @@
+<html>
+
+<head>
+    <title>
+        Imersão Dev - Aula 02
+    </title>
+</head>
+<style>
+body {
+    font-family: 'Roboto Mono',monospace;
+    min-height: 854px;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 20px;
+    height: 100vh;
+  }
+  
+  .page-title {
+    margin: 0 0 5px;
+  }
+  
+  .page-subtitle {
+    margin-top: 5px;
+  }
+  
+  .page-logo {
+    width: 200px;
+  }
+  
+  .quiz {   
+  }
+  
+  h2 {
+    position: absolute;
+    font-size:16px;
+    font-weight:bold;
+    top: 142px;
+    left: calc(50% - 72.5px);
+    width: 145px;
+    text-align:center;
+  }
+  
+  .alura-logo {
+    width: 40px;
+    position: absolute;
+    top: 10px;
+    right:10px;
+  }
+.coluna{
+  float: left;
+  width: 20%;
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+  @media screen and (max-width: 200px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
+
+<body>
+    <div class="container">
+        <h1 class="page-title">Quiz Pokemon - Você conhece estes Pokémons?  </h1>
+   <div id="quiz" class="quiz">
+          <form id="formulario" name="formulario">            
+                       
+   
+      <div class="row">
+  <div class="coluna">
+    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/003.png" style="width:50%">
+    <p>Qual é o Pokémon?:</p>
+ <input type="radio" id="Bulbasaur" name="pokemon1" value="Bulbasaur">
+  <label for="Bulbasaur">Bulbasaur</label><br>
+  <input type="radio" id="Ivysaur" name="pokemon1" value="Ivysaur">
+  <label for="Ivysaur">Ivysaur</label><br>
+  <input type="radio" id="Venusaur" name="pokemon1" value="Venusaur">
+  <label for="Venusaur">Venusaur</label>
+  </div>
+  <div class="coluna">
+    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/047.png" style="width:50%">
+     <p>Qual é o Pokémon?</p>
+ <input type="radio" id="Dewgong" name="pokemon2" value="Dewgong">
+  <label for="Dewgong">Dewgong</label><br>
+  <input type="radio" id="Venonat" name="pokemon2" value="Venonat">
+  <label for="Ivysaur">Venonat</label><br>
+  <input type="radio" id="Parasect" name="pokemon2" value="Parasect">
+  <label for="other">Parasect</label>
+  </div>
+  <div class="coluna">
+    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/070.png" style="width:50%">
+                  <p>Qual é o Pokémon?</p>
+ <input type="radio" id="Weepinbell" name="pokemon3" value="Weepinbell">
+  <label for="Weepinbell">Weepinbell</label><br>
+  <input type="radio" id="Dodrio" name="pokemon3" value="Dodrio">
+  <label for="Dodrio">Dodrio</label><br>
+  <input type="radio" id="Shellder" name="pokemon3" value="Shellder">
+  <label for="Shellder">Shellder</label>
+  </div>
+    <div class="coluna">
+    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/096.png" style="width:50%">
+        <p>Qual é o Pokémon?</p>
+ <input type="radio" id="Grimer" name="pokemon4" value="Grimer">
+  <label for="Grimer">Grimer</label><br>
+  <input type="radio" id="Drowzee" name="pokemon4" value="Drowzee">
+  <label for="Drowzee">Drowzee</label><br>
+  <input type="radio" id="Lickitung" name="pokemon4" value="Lickitung">
+  <label for="Lickitung">Lickitung</label>             
+  </div>
+ <div class="coluna">
+    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/114.png" style="width:50%">    <p>Qual é o Pokémon?</p>
+ <input type="radio" id="Omanyte" name="pokemon5" value="Grimer">
+  <label for="Omanyte">Omanyte</label><br>
+  <input type="radio" id="Scyther" name="pokemon5" value="Scyther">
+  <label for="Scyther">Scyther</label><br>
+  <input type="radio" id="Tangela" name="pokemon5" value="Tangela">
+  <label for="Tangela">Tangela</label>    
+        </div></div>
+       
+  <button onclick="enviarQuiz()" value="CALCULAR PONTUAÇÃO!">CALCULAR PONTUAÇÃO!</button>     
+    </div>
+     
+                      <br><br>
+
+          
+          </form>  
+    <a href="https://alura.com.br/" target="_blank">
+        <img src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="" class="alura-logo">
+    </a>
+    <h2></h2>
+</body>
+<script>
+function enviarQuiz(){
+ 
+var form = document.formulario;
+var pokemon1Pego = form.elements['pokemon1'];
+var pokemon1= pokemon1Pego.value;
+var pokemon2Pego = form.elements['pokemon2'];
+var pokemon2= pokemon2Pego.value;
+var pokemon3Pego = form.elements['pokemon3'];
+var pokemon3= pokemon3Pego.value;
+var pokemon4Pego = form.elements['pokemon4'];
+var pokemon4= pokemon4Pego.value;
+var pokemon5Pego = form.elements['pokemon5'];
+var pokemon5= pokemon5Pego.value;
+var pontuacao=0;  
+  
+if(pokemon1 == "Venusaur"){
+pontuacao++;  
+}
+if(pokemon2 == "Parasect"){
+pontuacao++;  
+}
+if(pokemon3 == "Weepinbell"){
+pontuacao++;  
+}
+if(pokemon4 == "Drowzee"){
+pontuacao++;  
+}
+if(pokemon5 == "Tangela"){
+pontuacao++;  
+}
+
+if(pontuacao == 5){ 
+  var quiz = window.document.getElementById('quiz'); 
+  quiz.innerHTML = "<img src='https://i.pinimg.com/originals/0b/91/fc/0b91fc26dc66e8854c0d1b29315cdc44.gif'></img><br><br> Parabéns! Você fez "+pontuacao+" de 5 possíveis! Um verdadeiro Treinador Pokémon!";  
+} 
+if(pontuacao == 4){ 
+  var quiz = window.document.getElementById('quiz'); 
+  quiz.innerHTML = "<img src='https://i.gifer.com/BjzW.gif'></img><br><br> Você fez "+pontuacao+" de 5 possíveis! Falta pouco para ser um verdadeiro Treinador Pokémon!";  
+} 
+if(pontuacao == 3){ 
+  var quiz = window.document.getElementById('quiz'); 
+  quiz.innerHTML = "<img src='https://i.pinimg.com/originals/79/10/63/7910637cdbcaf527770ae38e8d7d1ad5.gif'></img><br><br> Você fez "+pontuacao+" de 5 possíveis! Ainda falta melhorar para ser um verdadeiro Treinador Pokémon!";  
+}
+if(pontuacao == 2){ 
+  var quiz = window.document.getElementById('quiz'); 
+  quiz.innerHTML = "<img src='https://i.pinimg.com/originals/58/5a/ed/585aedfb1d5499ecaeca8103766adda7.gif'></img><br><br> Você fez apenas "+pontuacao+" de 5 possíveis! Treinador Pokémon? Certamente não! Você está mais próximo de ser um membro da Equipe Rocket!";  
+}
+if(pontuacao == 1){ 
+  var quiz = window.document.getElementById('quiz'); 
+  quiz.innerHTML = "<img src='https://img2.ibxk.com.br/2016/08/18/18085632911004.gif'></img><br><br> Você fez apenas "+pontuacao+" de 5 possíveis! Treinador Pokémon? Certamente não! Você certamente é um membro da Equipe Rocket!";  
+}
+if(pontuacao == 0){ 
+  var quiz = window.document.getElementById('quiz'); 
+  quiz.innerHTML = "<img src='https://media.tenor.com/images/fa30cb1c2261d4b874f886641a08bf48/tenor.gif'></img><br><br> Você fez apenas "+pontuacao+" de 5 possíveis! Treinador Pokémon? Boa tentativa Meowth!";  
+}
+  
+  
+ 
+  
+
+}
+</script>
+
+</html>
