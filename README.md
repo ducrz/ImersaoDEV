@@ -1,2 +1,2 @@
 # ImersaoDEV-Alura
-Códigos da Imersão DEV da Alura.
+Códigos desenvolvidos durante a Imersão DEV da Alura.
