@@ -3,4 +3,4 @@ Códigos desenvolvidos durante a [Imersão DEV da Alura](https://imersao.dev), e
 
 Optei por colocar os códigos Javascript e CSS no arquivo HTML para facilitar o entendimento.
 
-Quer ser avisado das próximas imersões da Alura? Inscreva-se na [Imersão DEV da Alura, newsletter Imersão, Aprendizagem e Tecnologia!](https://www.alura.com.br/imersao)
+Quer ser avisado das próximas imersões da Alura? Inscreva-se na [Newsletter Imersão DEV da Alura, Imersão, Aprendizagem e Tecnologia!](https://www.alura.com.br/imersao)
