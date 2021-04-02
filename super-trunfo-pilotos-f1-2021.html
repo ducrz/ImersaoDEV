@@ -1,0 +1,282 @@
+<html>
+
+<head>
+    <title>
+        Imersão Dev - Aula 07
+    </title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital@0;1&display=swap');
+body {
+    font-family: 'Titillium Web', sans-serif; 
+    min-height: 1024px;
+    background-image: url('https://i.ibb.co/gWJ2zcS/super-trunfo-f1.png');
+    background-color: #000000;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    padding-bottom: 20vh;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.page-title {
+    color: #000000;
+    margin: 10px 0;
+}
+
+button {
+    padding: .8rem 1.5rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+     background-color: #da0010;
+  color:white;
+}
+button:disabled {
+
+    padding: .8rem 1.5rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    background-color: white;
+  color:white;
+}
+
+h2 {
+    color: 000000;
+}
+
+#carta-jogador {
+    width: 360px;
+    height: 500px;
+    overflow: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+}
+
+#carta-jogador h3 {
+    text-align: center;
+}
+
+.carta-imagem {
+    border: 1px solid black;
+    height: 100px;
+    margin: 10px;
+}
+
+.carta-imagem img {
+    width: 100%;
+    height: 100%;
+}
+
+.carta-status {
+    height: 160px;
+    margin: 1.5rem;
+}
+
+.carta-status input {
+    margin: 20px 10px;
+}
+
+.opcoes {
+    color: 000000;
+}
+#cartaEscolhida{
+      color: 000000;
+
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-super-trunfo.png" class="page-logo"
+            alt="">
+       <p><img src="https://i.ibb.co/2NZ75sM/fia-f1.png" alt="FIA F1" border="0"></p>
+        <h1 class="page-title">Super Trunfo Pilotos F1 2021</h1>
+     
+        <button onclick="sortearCarta()" id="btnSortear">Sortear carta</button>
+
+        <form id="form">
+          <div class="cartaEscolhida" id="cartaEscolhida"></div>
+            
+            <div class="opcoes" id="opcoes"></div>
+            <button type="button" id="btnJogar" onclick="jogar()" disabled="false">Jogar</button>
+        </form>
+    </div>
+</body>
+<script>
+var cartaHamilton={
+  nome: "Lewis Hamilton", foto:"https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col/image.png", atributos:{ titulos:7, corridas:267, vitorias:96, podios:166, pontos:3803
+  }
+};
+var cartaVerstappen={
+  nome: "Max Verstappen",foto:"https://www.formula1.com/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:120, vitorias:10, podios:43, pontos:1180
+  }
+};
+var cartaBottas={
+  nome: "Valtteri Bottas", foto:"https://www.formula1.com/content/dam/fom-website/drivers/V/VALBOT01_Valtteri_Bottas/valbot01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:158, vitorias:9, podios:57, pontos:1528
+  }
+};
+var cartaLando={
+  nome: "Lando Norris", foto:"https://www.formula1.com/content/dam/fom-website/drivers/L/LANNOR01_Lando_Norris/lannor01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:39, vitorias:0, podios:1, pontos:158
+  }
+};
+var cartaPerez={
+  nome: "Sergio Perez", foto:"https://www.formula1.com/content/dam/fom-website/drivers/S/SERPER01_Sergio_Perez/serper01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:194, vitorias:1, podios:10, pontos:716
+  }
+};
+var cartaLeclerc={
+  nome: "Charles Leclerc", foto:"https://www.formula1.com/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:60, vitorias:2, podios:12, pontos:409
+  }
+};
+var cartaRicciardo={
+  nome: "Daniel Ricciardo", foto:"https://www.formula1.com/content/dam/fom-website/drivers/D/DANRIC01_Daniel_Ricciardo/danric01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:189, vitorias:7, podios:31, pontos:1165
+  }
+};
+var cartaSainz={
+  nome: "Carlos Sainz", foto:"https://www.formula1.com/content/dam/fom-website/drivers/C/CARSAI01_Carlos_Sainz/carsai01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:120, vitorias:0, podios:2, pontos:376
+  }
+};
+var cartaTsunoda={
+  nome: "Yuki Tsunoda", foto:"https://www.formula1.com/content/dam/fom-website/drivers/Y/YUKTSU01_Yuki_Tsunoda/yuktsu01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:1, vitorias:0, podios:2, pontos:2
+  }
+};
+var cartaStroll={
+  nome: "Lance Stroll", foto:"https://www.formula1.com/content/dam/fom-website/drivers/L/LANSTR01_Lance_Stroll/lanstr01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:79, vitorias:0, podios:3, pontos:143
+  }
+};
+var cartaRaikkonen={
+  nome: "Kimi Raikkonen",  foto:"https://www.formula1.com/content/dam/fom-website/drivers/K/KIMRAI01_Kimi_R%C3%A4ikk%C3%B6nen/kimrai01.png.transform/2col/image.png", atributos:{ titulos:1, corridas:333, vitorias:21, podios:103, pontos:1863
+  }
+};
+var cartaGiovinazzi={
+  nome: "Antonio Giovinazzi", foto:"https://www.formula1.com/content/dam/fom-website/drivers/A/ANTGIO01_Antonio_Giovinazzi/antgio01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:41, vitorias:0, podios:0, pontos:18
+  }
+};
+var cartaOcon={
+  nome: "Esteban Oconn", foto:"https://www.formula1.com/content/dam/fom-website/drivers/E/ESTOCO01_Esteban_Ocon/estoco01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:68, vitorias:0, podios:1, pontos:198
+  }
+};
+var cartaRussell={
+  nome: "George Russell", foto:"https://www.formula1.com/content/dam/fom-website/drivers/G/GEORUS01_George_Russell/georus01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:39, vitorias:0, podios:0, pontos:3
+  }
+};
+var cartaVettel={
+  nome: "Sebastian Vettel", foto:"https://www.formula1.com/content/dam/fom-website/drivers/S/SEBVET01_Sebastian_Vettel/sebvet01.png.transform/2col/image.png", atributos:{  titulos:4, corridas:259, vitorias:53, podios:121, pontos:3018
+  }
+};
+var cartaSchumacher={
+  nome: "Mick Schumacher", foto:"https://www.formula1.com/content/dam/fom-website/drivers/M/MICSCH02_Mick_Schumacher/micsch02.png.transform/2col/image.png", atributos:{  titulos:0, corridas:1, vitorias:0, podios:0, pontos:0
+  }
+};
+var cartaGasly={
+  nome: "Pierre Gasly", foto:"https://www.formula1.com/content/dam/fom-website/drivers/P/PIEGAS01_Pierre_Gasly/piegas01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:65, vitorias:1, podios:2, pontos:199
+  }
+};
+var cartaLatifi={
+  nome: "Nicholas Latifi", foto:"https://www.formula1.com/content/dam/fom-website/drivers/N/NICLAF01_Nicholas_Latifi/niclaf01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:18, vitorias:0, podios:0, pontos:0
+  }
+};
+var cartaAlonso={
+  nome: "Fernando Alonso", foto:"https://www.formula1.com/content/dam/fom-website/drivers/F/FERALO01_Fernando_Alonso/feralo01.png.transform/2col/image.png", atributos:{  titulos:2, corridas:315, vitorias:32, podios:97, pontos:1899
+  }
+};
+var cartaMazepin={
+  nome: "Nikita Mazepin", foto:"https://www.formula1.com/content/dam/fom-website/drivers/N/NIKMAZ01_Nikita_Mazepin/nikmaz01.png.transform/2col/image.png", atributos:{  titulos:0, corridas:1, vitorias:0, podios:0, pontos:0
+  }
+};
+
+var cartaMaquina;
+var cartaJogador;
+var cartas=[cartaHamilton,cartaVerstappen,cartaBottas,cartaLando,cartaPerez,cartaLeclerc,cartaRicciardo,cartaSainz,cartaTsunoda,cartaStroll,cartaRaikkonen,cartaGiovinazzi,cartaOcon,cartaRussell,cartaVettel,cartaSchumacher,cartaGasly,cartaLatifi,cartaAlonso,cartaMazepin];
+
+//Inicio Funcao sortearCarta
+function sortearCarta(){
+ var numeroCartaMaquina= parseInt(Math.random() * (cartas.length - 0 + 1));  
+  cartaMaquina = cartas[numeroCartaMaquina]; 
+  
+     var numeroCartaJogador= parseInt(Math.random() * (cartas.length - 0 + 1));  
+  
+  while(numeroCartaJogador == numeroCartaMaquina){
+     var numeroCartaJogador= parseInt(Math.random() * (cartas.length - 0 + 1));  
+
+  }
+  cartaJogador = cartas[numeroCartaJogador]; 
+  
+  document.getElementById('btnSortear').disabled = true
+	document.getElementById('btnJogar').disabled = false
+  exibirOpcoes()
+
+}
+//Fim Funcao Sortear Carta
+
+function exibirOpcoes(){
+ 	var opcoes = document.getElementById('opcoes');
+  var opcoesTexto = "<h2>Qual Critério Deseja Comparar?</h2>";
+  
+  var carta = document.getElementById('cartaEscolhida');
+  var cartaTexto = "";
+  
+  for(var atributo in cartaJogador.atributos){
+    opcoesTexto +="<input type='radio' name='atributo' value='"+atributo+"'>"+atributo;
+
+  }
+    	cartaTexto +="<p><b>A Sua Carta:</b> "+cartaJogador.nome+"<br> <img src='"+cartaJogador.foto+"'></p><br>";
+      cartaTexto +="<p><b>Carta da Máquina:</b> "+cartaMaquina.nome+"<br> <img src='"+cartaMaquina.foto+"'></p><br>";
+  
+      carta.innerHTML = cartaTexto;	
+      opcoes.innerHTML = opcoesTexto
+  
+}
+//Fim funcao exibirOpcoes
+
+function obtemAtributoSelecionado(){
+  var radioAtributo= document.getElementsByName('atributo');
+  
+  for(var i=0; i< radioAtributo.length; i++){
+    if(radioAtributo[i].checked){
+      return radioAtributo[i].value; 
+    }
+  }//Fim for
+  
+}
+//Fim function obtemAtributoSelecionado
+function jogar(){
+  var atributoSelecionado = obtemAtributoSelecionado();
+  
+  if(cartaJogador.atributos[atributoSelecionado] > cartaMaquina.atributos[atributoSelecionado]){
+    var opcoesVitoria="<h3>Você Ganhou!</h3><br> O Piloto <b>"+cartaJogador.nome+"</b> têm <b>"+cartaJogador.atributos[atributoSelecionado]+"</b> "+atributoSelecionado+" e o Piloto <b>"+cartaMaquina.nome+"</b> têm <b>"+cartaMaquina.atributos[atributoSelecionado]+"</b> "+atributoSelecionado+".";
+     opcoes.innerHTML = opcoesVitoria
+    
+    document.getElementById('btnJogar').disabled = true
+    document.getElementById('btnSortear').disabled = false
+
+
+
+   }else if(cartaJogador.atributos[atributoSelecionado] < cartaMaquina.atributos[atributoSelecionado]){
+    var opcoesDerrota="<h3>Infelizmente a Máquina Ganhou!</h3><br> O Piloto <b>"+cartaMaquina.nome+"</b> têm <b>"+cartaMaquina.atributos[atributoSelecionado]+"</b> "+atributoSelecionado+" e o Piloto <b>"+cartaJogador.nome+"</b> têm <b>"+cartaJogador.atributos[atributoSelecionado]+"</b> "+atributoSelecionado+".";
+    opcoes.innerHTML = opcoesDerrota;
+    document.getElementById('btnJogar').disabled = true
+    document.getElementById('btnSortear').disabled = false     
+  }else{
+    var opcoesEmpate="<h3>Empate com a Máquina!</h3><br> O Piloto <b>"+cartaMaquina.nome+"</b> têm <b>"+cartaMaquina.atributos[atributoSelecionado]+"</b> "+atributoSelecionado+" e o Piloto <b>"+cartaJogador.nome+"</b> também têm <b>"+cartaJogador.atributos[atributoSelecionado]+"</b> "+atributoSelecionado+".";    
+    opcoes.innerHTML = opcoesEmpate
+    document.getElementById('btnJogar').disabled = true
+    document.getElementById('btnSortear').disabled = false
+  } 
+  
+  
+}
+//Fim funcao jogar
+</script>
+
+</html>
