@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <title>Imersão Dev - Aula 01</title>
+  </head>
+  <style>
+  body {
+  font-family: 'Roboto Mono',monospace;
+  min-height: 660px;
+  background-image: url('https://i.ibb.co/yp8XnFd/ps5.jpg');
+  background-color: #000000;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+    color: white;
+
+}
+.container {
+  text-align: center;
+  padding: 20px;
+  height: 100vh;
+}
+
+.page-title {
+  color: #ffffff;
+  margin: 0 0 5px;
+}
+
+.page-subtitle {
+  color: #ffffff;
+  margin-top: 5px;
+}
+
+.page-logo {
+  width: 200px;
+}
+
+.alura-logo {
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  right:10px;
+}
+form{
+  color: white;
+  
+}
+
+  </style>
+  <body>
+    <div class="container">
+      <h1 class="page-title">
+        Comprar PS5 no Brasil ou Importar?
+      </h1>
+      <p class="page-subtitle">
+        Descubra o valor final de um PS5 importado, já com o valor dos impostos inclusos!
+      </p>
+      <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-conversor-de-moedas.svg" class="page-logo" alt="">
+        <form >
+       <label for="preco">Melhor Preço no Brasil em R$ (com frete incluso):</label><br>
+  <input type="number" value="5000" id="precobrasil" name="precobrasil" m><br>
+  <label for="precoeua">Melhor Preço EUA em US$ (com frete incluso):</label><br>
+  <input type="number"  value="499" id="precoeua" name="precoeua" >
+          <br>
+   <label for="dolar">Cotação Dólar Dia:</label><br>
+  <input type="number" value="5.54" id="dolardia" name="dolardia"><br><br>
+        <input type="button"  onclick="calculo()" value="CALCULAR"><br><br>
+
+    </form>
+      <div id="resultado"></div>
+    </div>
+      
+  
+  </body>
+  <script>
+  //Abre  Funcao que faz os calculos
+function calculo(){  
+  
+//Pega Valor do Input precobrasil  
+var precoBrasil = parseFloat(document.getElementById('precobrasil').value);
+  
+//Pega Valor do Input precoeua  
+var precoEUA = parseFloat(document.getElementById('precoeua').value);
+
+//Pega Valor do Input dolardia  
+var dolarDia = parseFloat(document.getElementById('dolardia').value);
+  
+//Acrescenta valor do imposto de importacao 60% + 18% de icms sobre o valor em dolar
+var precoDolarComImposto = precoEUA * 1.78;
+  
+//Converte para R$  
+var precoConvertido= precoDolarComImposto * dolarDia;
+
+//Ajusta casas decimais 
+ var precoFinal= precoConvertido.toFixed(2);
+
+//Fomata no padrão R$  
+var precoFinal = precoFinal.replace('.', ',');
+var precoFinal = precoFinal.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  
+//Caso queira exibir em alert, o codigo esta abaixo 
+//alert("Preço Final PS5 Importado: R$ " +precoFinal);
+  
+//Exibe na tela o preco final
+resultado.innerHTML = "Preço Final PS5 Importado (com impostos inclusos): R$ "+precoFinal;
+}
+//Fecha funcao que faz os calculos
+  </script>
+</html>
